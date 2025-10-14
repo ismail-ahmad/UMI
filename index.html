@@ -34,14 +34,14 @@
             display: flex;
             flex-flow: row nowrap;
             gap: 0;
-            border: 1px solid rgba(255, 255, 255, 0.568);
             border-radius: var(--form-border-radius);
             outline: none;
+            background-color: white;
+            background-image: linear-gradient(to right, white 80%, #171e40 81%);
         }
         form input{
             padding: 8px 16px 8px 8px;
             border: 0;
-            background-color: rgba(255, 255, 255, 0.479);
             color: black;
             overflow: hidden;
             outline: none;
@@ -56,16 +56,15 @@
             width: calc(100% - 91px);
         }
         input[type="submit"]{
-            border-radius: 0 var(--form-border-radius) var(--form-border-radius) 0;
+            border-radius: var(--form-border-radius);
             outline: none;
             width: 107px;
+            color: white;
             transition: 0.5s background-color;
+            background-color: #242e62;
         }
         input[type="submit"]:hover{
             cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.703);
-            color: black;
-            transition: 0.5s background-color;
         }
         @media screen and (max-width: 700px){
             form{
