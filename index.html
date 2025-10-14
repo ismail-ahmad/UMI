@@ -64,16 +64,26 @@
             border-radius: var(--form-border-radius) 0 0 var(--form-border-radius);
             width: calc(100% - 107px);
         }
-        input[type="submit"]{
+        [type="submit"]{
             border-radius: var(--form-border-radius);
             outline: none;
             width: 107px;
             color: white;
             transition: 0.5s background-color;
             background-color: #242e62;
+            font-family: gruppo, Verdana, Geneva, Tahoma, sans-serif;
+            border: none;
+            font-size: 16px;
         }
-        input[type="submit"]:hover{
+        [type="submit"]:hover{
             cursor: pointer;
+        }
+        .spinner{
+        animation: spin 1s linear infinite;
+        transform-origin: 50% 50%;
+        }
+        @keyframes spin {
+          100% { transform: rotate(360deg); }
         }
         @media screen and (max-width: 700px) and (min-width: 305px){
             form{
@@ -91,7 +101,23 @@
     </div>
     <form>
         <input name="email" type="email" value="Email">
-        <input type="submit" value="Notify me!">
+        <button type="submit" id="submitButton">
+        <span class="btn-text">Notify me!</span>
+  <svg class="spinner" width="30.5" height="30.5" viewBox="0 0 50 50" style="display:none;">
+  <circle 
+    class="path" 
+    cx="25" 
+    cy="25" 
+    r="15" 
+    fill="none" 
+    stroke="white" 
+    stroke-width="3"
+    stroke-dasharray="70 220" 
+    stroke-dashoffset="0">
+  </circle>
+</svg>
+
+      </button>
     </form>
     </section>
     <script>
@@ -110,14 +136,20 @@
             let email = document.querySelector('input[type="email"]').value.toLowerCase();
           if(email !== 'email'){
             e.preventDefault();
+            document.querySelector('.btn-text').style.display = "none";
+            document.querySelector('.spinner').style.display = "inline";
+            document.querySelector('#submitButton').style.padding = '0';
           const email = document.querySelector('input[type="email"]').value;
           let response = await fetch(scriptURL, {
             method: "POST",
-            body: new URLSearchParams({ email }) // URL-encoded format
+            body: new URLSearchParams({ email })
           });
           if(response.ok){
             document.querySelector('input[type="email"]').value = "Email";
-          window.location.href = "https://www.umiconsultants.com/thank-you.html";
+            document.querySelector('.btn-text').style.display = "inline";
+            document.querySelector('.spinner').style.display = "none";
+            document.querySelector('#submitButton').style.padding = '12px';
+          window.location.href = "/thank-you.html";
           }
           }
         });
