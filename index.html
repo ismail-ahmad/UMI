@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
     <style>
+        :root{
+            --form-border-radius: 20px;
+        }
         .comingsoon{
             background-image: linear-gradient(to bottom, #201453, #7459e8);
             height: 100vh;
@@ -17,14 +20,70 @@
             justify-content: center;
             align-items: center;
             flex-flow: column nowrap;
+            gap: 80px;
+        }
+        #intro{
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
             gap: 20px;
+        }
+        form{
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 0;
+            border: 1px solid rgba(255, 255, 255, 0.568);
+            border-radius: var(--form-border-radius);
+            outline: none;
+        }
+        form input{
+            padding: 8px 16px 8px 8px;
+            border: 0;
+            background-color: rgba(255, 255, 255, 0.479);
+            color: black;
+            overflow: hidden;
+            outline: none;
+            font-family: gruppo, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+        }
+        input[type="email"]::placeholder {
+            color: black;
+        }
+        input[type="email"]{
+            border-radius: var(--form-border-radius) 0 0 var(--form-border-radius);
+            width: calc(100% - 91px);
+        }
+        input[type="submit"]{
+            border-radius: 0 var(--form-border-radius) var(--form-border-radius) 0;
+            outline: none;
+            width: 107px;
+            transition: 0.5s background-color;
+        }
+        input[type="submit"]:hover{
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.703);
+            color: black;
+            transition: 0.5s background-color;
+        }
+        @media screen and (max-width: 700px){
+            form{
+            width: 300px;
+        }
         }
     </style>
 </head>
 <body>
     <section class="comingsoon">
-    <h1>UMI Consultants</h1>
-    <h2>Coming Soon!</h2>
+    <div id="intro">
+        <h1>UMI Consultants</h1>
+        <h2>Website Under Development</h2>
+        <h2>Coming Soon!</h2>
+    </div>
+    <form action="">
+        <input name="Email" type="email" placeholder="Email">
+        <input type="submit" value="Notify me!">
+    </form>
     </section>
 </body>
 </html>
