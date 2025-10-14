@@ -105,17 +105,20 @@
                 e.target.value = "Email";
             }
         });
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwhZGF2BBGOsWhPOSmMcQLzkjANJ5dPy2rG-8BJFY28b2W2FQh976nTiPTL_gKg-sl6/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbzu7QLiV2Z0oGCyNkWNdM5cHEMcdg7EWwDs2a-RersSsd-qb-kmEO8DuUBYXVUV4dzK/exec";
         document.querySelector("form").addEventListener("submit", async (e) => {
             let email = document.querySelector('input[type="email"]').value.toLowerCase();
           if(email !== 'email'){
             e.preventDefault();
           const email = document.querySelector('input[type="email"]').value;
-          await fetch(scriptURL, {
+          let response = await fetch(scriptURL, {
             method: "POST",
             body: new URLSearchParams({ email }) // URL-encoded format
           });
-          window.location.href = "https://www.umiconsultants.com/thank-you.html"
+          if(response.ok){
+            document.querySelector('input[type="email"]').value = "Email";
+          window.location.href = "https://www.umiconsultants.com/thank-you.html";
+          }
           }
         });
     </script>
