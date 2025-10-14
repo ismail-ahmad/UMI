@@ -30,6 +30,13 @@
             align-items: center;
             gap: 20px;
         }
+        #intro p{
+            font-family: gruppo, Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 18px;
+        }
+        #intro h2{
+            font-style: italic;
+        }
         form{
             display: flex;
             flex-flow: row nowrap;
@@ -77,13 +84,25 @@
     <section class="comingsoon">
     <div id="intro">
         <h1>UMI Consultants</h1>
-        <h2>Website Under Development</h2>
+        <p>Website Under Development</p>
         <h2>Coming Soon!</h2>
     </div>
     <form action="">
-        <input name="Email" type="email" placeholder="Email">
+        <input name="Email" type="email" value="Email">
         <input type="submit" value="Notify me!">
     </form>
     </section>
+    <script>
+        document.querySelector('input[type="email"]').addEventListener('focus', function(e){
+            if(e.target.value === "Email") {
+                e.target.value = "";
+            }
+        });
+        document.querySelector('input[type="email"]').addEventListener('blur', function(e){
+            if(e.target.value === "") {
+                e.target.value = "Email";
+            }
+        });
+    </script>
 </body>
 </html>
