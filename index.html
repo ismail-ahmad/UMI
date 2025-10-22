@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="stylesheets/globalStyles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gruppo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <style>
         :root{
             --form-border-radius: 20px;
         }
         .comingsoon{
-            background-image: linear-gradient(to bottom, #171e40, #0D1126);
+            background: #060606 url('bg.png');
+            background-repeat: no-repeat;
+            background-position: center;
             height: 100vh;
             width: 100vw;
             display: flex;
@@ -29,10 +31,15 @@
             align-items: center;
             gap: 20px;
         }
-        #intro p{
-            font-family: gruppo, Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 18px;
+        #intro h1{
+            font-style: italic;
         }
+        #intro p{
+            font-family: poppins, Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            color: #9aa0a6;
+        }
+
         #intro h2{
             font-style: italic;
         }
@@ -54,8 +61,8 @@
             color: black;
             overflow: hidden;
             outline: none;
-            font-family: gruppo, Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 18px;
+            font-family: poppins, Arial, Helvetica, sans-serif;
+            font-size: 16px;
         }
         input[type="email"]::placeholder {
             color: black;
@@ -70,8 +77,8 @@
             width: 107px;
             color: white;
             transition: 0.5s background-color;
-            background-color: #242e62;
-            font-family: gruppo, Verdana, Geneva, Tahoma, sans-serif;
+            background-image: linear-gradient(90deg, #3186ff, #346bf1 65%, #4fa0ff);
+            font-family: poppins, Arial, Helvetica, sans-serif;
             border: none;
             font-size: 16px;
         }
@@ -103,7 +110,7 @@
         <input name="email" type="email" value="Email">
         <button type="submit" id="submitButton">
         <span class="btn-text">Notify me!</span>
-  <svg class="spinner" width="30.5" height="30.5" viewBox="0 0 50 50" style="display:none;">
+  <svg class="spinner" width="30.5" height="30.5" viewBox="0 0 50 50" style="display:none; margin: auto;">
   <circle 
     class="path" 
     cx="25" 
@@ -137,8 +144,8 @@
           if(email !== 'email'){
             e.preventDefault();
             document.querySelector('.btn-text').style.display = "none";
-            document.querySelector('.spinner').style.display = "inline";
-            document.querySelector('#submitButton').style.padding = '0';
+            document.querySelector('.spinner').style.display = "block";
+            document.querySelector('#submitButton').style.paddingTop = '0';
           const email = document.querySelector('input[type="email"]').value;
           let response = await fetch(scriptURL, {
             method: "POST",
